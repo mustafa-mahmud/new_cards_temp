@@ -1,0 +1,204 @@
+*,
+::after,
+::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+}
+
+.card_container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.game_info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.5rem;
+	padding: 1rem 0.5rem;
+	color: #fff;
+	background-color: black;
+	position: absolute;
+	width: 100%;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	letter-spacing: 1.5px;
+
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.8s;
+	z-index: 999;
+}
+
+.active {
+	visibility: visible !important;
+	opacity: 1 !important;
+}
+
+.cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	grid-template-rows: repeat(auto-fit, minmax(1fr, 1fr));
+	grid-auto-flow: row dense;
+	gap: 7px;
+
+	align-content: flex-start;
+	justify-content: flex-start;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	padding: 1rem;
+}
+
+.rest_lifes {
+	display: flex;
+	align-items: center;
+}
+
+.rest_lifes div {
+	width: 30px;
+	height: 30px;
+	position: relative;
+	border: 1px solid;
+	margin-left: 5px;
+}
+
+.rest_lifes div img {
+	position: absolute;
+	left: -35%;
+	width: 30px;
+	height: 30px;
+}
+
+.rest_lifes img:first-child {
+	margin-left: 10px;
+}
+
+.cards>div {
+	justify-self: flex-start;
+}
+
+.cards>div img {
+	width: 100%;
+	height: auto;
+	max-width: 200px;
+	border: 1px solid;
+	object-fit: contain;
+	cursor: pointer;
+}
+
+.right::before {
+	content: url('img/right.png');
+	position: absolute;
+	display: block;
+	z-index: 99;
+}
+
+.wrong::before {
+	content: url('img/wrong.png');
+	position: absolute;
+	display: block;
+	z-index: 99;
+}
+
+.rest_lifes .wrong::before {
+	content: url('img/wrong_small.png');
+	position: absolute;
+	display: block;
+	z-index: 99;
+}
+
+/* Overlay */
+.overlay {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-color: #000;
+	z-index: 9999;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	visibility: hidden;
+	opacity: 0;
+}
+
+.overlay_content {
+	position: fixed;
+	z-index: 999999;
+	padding: 1rem;
+	background-color: blueviolet;
+	color: #fff;
+	text-align: center;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.7rem;
+	text-transform: uppercase;
+}
+
+.overlay_content p {
+	margin-top: 0.5rem;
+	font-weight: bold;
+}
+
+.overlay_content p strong {
+	font-size: 3rem;
+	color: crimson;
+}
+
+.overlay_content img {
+	width: 300px;
+	height: 400px;
+	display: inline-block;
+}
+
+.show_info {
+	position: fixed;
+	left: 1rem;
+	bottom: 1rem;
+	z-index: 99;
+	padding: 0.5px;
+	background-color: #999;
+	border: 1px solid;
+}
+
+.show_info img {
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+
+.sounds_info {
+	position: fixed;
+	right: 1rem;
+	bottom: 1rem;
+	z-index: 99;
+}
+
+.sounds_info img {
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+
+.temp_img {
+	width: 300px;
+	height: 300px;
+	cursor: pointer;
+	/* visibility: hidden; */
+	border: none;
+}
