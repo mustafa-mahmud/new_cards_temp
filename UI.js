@@ -10,9 +10,11 @@ class UI {
     overlayEl,
     gameInfoEl,
     soundInfoEl,
-    playAudioEl
+    playAudioEl,
+    tempImgEl
   ) {
     this.dataCL = new Data();
+
     this.cardsEl = cardsEl;
     this.totalCardsEl = totalCardsEl;
     this.scoresEl = scoresEl;
@@ -21,17 +23,29 @@ class UI {
     this.gameInfoEl = gameInfoEl;
     this.soundInfoEl = soundInfoEl;
     this.playAudioEl = playAudioEl;
+    this.tempImgEl = tempImgEl;
+  }
+
+  tempImgSet() {
+    this.dataCL.addInArr();
+    this.dataCL.shuffleArr();
+
+    this.tempImgEl.src = `img/${
+      this.dataCL.imgArr[this.dataCL.imgArr.length - 1]
+    }.png`;
+
+    this.tempImgEl.onload = () => {
+      setTimeout(() => this.display(), 1000);
+    };
   }
 
   display() {
-    this.dataCL.addInArr();
-    this.dataCL.shuffleArr();
     this.cardsEl.innerHTML = '';
 
     //add card to DOM
     this.dataCL.imgArr.forEach((_, index) => {
       this.cardsEl.innerHTML += `
-			<div class="img_content"><img src="img/${
+			<div class="img_content"><img class="active" src="img/${
         this.dataCL.imgArr[this.dataCL.indexArr[index]]
       }.png" alt="${this.dataCL.imgArr[this.dataCL.indexArr[index]]}"></div>
 			`;
@@ -45,6 +59,10 @@ class UI {
       );
 
     this.totalCardsEl.textContent = this.dataCL.cardNumsIncrease();
+  }
+
+  addActive() {
+    console.log(this);
   }
 
   getClickedImg(e) {
@@ -73,13 +91,9 @@ class UI {
     this.cardsEl.style.pointerEvents = 'none';
 
     setTimeout(() => {
-      this.display();
+      this.tempImgSet();
       //pointer events add
       this.cardsEl.style.pointerEvents = 'auto';
-
-      window.onload = () => {
-        alert(123);
-      };
     }, 2000);
   }
 

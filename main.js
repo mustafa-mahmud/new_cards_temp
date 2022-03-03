@@ -1,5 +1,6 @@
 'use strict';
 
+import Data from './Data.js';
 import UI from './UI.js';
 
 const cardsEl = document.querySelector('.cards');
@@ -21,12 +22,13 @@ const uiCL = new UI(
   overlayEl,
   gameInfoEl,
   soundInfoEl,
-  playAudioEl
+  playAudioEl,
+  tempImgEl
 );
 
 function init() {
-  uiCL.display();
-  setTimeout(() => uiCL.display(), 1000);
+  uiCL.tempImgSet();
+  setTimeout(() => uiCL.tempImgSet(), 2000);
 }
 
 ///////////////////////////////
@@ -34,11 +36,14 @@ init();
 showInfoEl.addEventListener('click', () => uiCL.gameInfoElShowHide());
 soundInfoEl.addEventListener('click', () => uiCL.soundToggle());
 
-/* tempImgEl.onload = function () {
-  alert('Image loaded');
-};
+/* const dataCL = new Data();
 
-setTimeout(() => {
-  tempImgEl.src = 'img/1.png';
-}, 5000);
- */
+dataCL.addInArr(); */
+
+/* setTimeout(() => {
+  tempImgEl.src = `img/${dataCL.imgArr[dataCL.imgArr.length - 1]}.png`;
+}, 3000);
+
+tempImgEl.onload = function () {
+  console.log(789);
+}; */

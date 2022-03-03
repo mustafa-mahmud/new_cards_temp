@@ -95,6 +95,12 @@ body {
 	border: 1px solid;
 	object-fit: contain;
 	cursor: pointer;
+
+	display: none;
+}
+
+.cards>div img.active {
+	display: block;
 }
 
 .right::before {
@@ -195,10 +201,8 @@ body {
 	cursor: pointer;
 }
 
+
 .temp_img {
-	width: 300px;
-	height: 300px;
-	cursor: pointer;
-	/* visibility: hidden; */
+	display: none;
 	border: none;
 }
