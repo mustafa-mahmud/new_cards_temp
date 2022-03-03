@@ -35,15 +35,3 @@ function init() {
 init();
 showInfoEl.addEventListener('click', () => uiCL.gameInfoElShowHide());
 soundInfoEl.addEventListener('click', () => uiCL.soundToggle());
-
-/* const dataCL = new Data();
-
-dataCL.addInArr(); */
-
-/* setTimeout(() => {
-  tempImgEl.src = `img/${dataCL.imgArr[dataCL.imgArr.length - 1]}.png`;
-}, 3000);
-
-tempImgEl.onload = function () {
-  console.log(789);
-}; */
